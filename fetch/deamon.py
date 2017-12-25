@@ -1,6 +1,7 @@
 import time
 import check_services
 import check_ports
+import check_libs
 
 import expectation
 
@@ -40,14 +41,14 @@ def check_service(task_id):
 def check_port(task_id):
     checker = check_ports.port_checker(task_id)
     checker.check()
-    pass
 
 
-def check_libs():
-    pass
+def check_lib(task_id):
+    checker = check_libs.lib_checker(task_id)
+    checker.check()
 
 
-def check_mstr():
+def check_mstr_reg():
     pass
 
 
@@ -60,9 +61,9 @@ def do_once():
     if id != -1:
         print "task {0} should start".format(id)
         insert_expectation(int(id))
-        check_service(id)
-        check_port(id)
-        # check_libs(id)
+        #check_service(id)
+        #check_port(id)
+        check_lib(id)
         # check_mstr(id)
         # check_others(id)
     else:
