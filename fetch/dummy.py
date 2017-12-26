@@ -1,4 +1,5 @@
 from execute_sql import *
+import time
 
 
 def dummy():
@@ -16,6 +17,8 @@ def dummy():
 def clean():
     helper = sql_helper()
     helper.exe_insert_sql('''  delete from FetchResult ''')
+    print 'clean fetch result table when {0}'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+
 
 
 if __name__ == "__main__":

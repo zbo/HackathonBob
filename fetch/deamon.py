@@ -61,6 +61,10 @@ def check_other(task_id):
     pass
 
 
+def update_task(task_id):
+    helper.exe_update_sql('''select Task where status !='done' and id={0} '''.format(task_id))
+
+
 def do_once():
     id = new_task_coming()
     if id != -1:
@@ -71,8 +75,10 @@ def do_once():
         check_lib(id)
         check_mstr_reg(id)
         check_other(id)
+        update_task(id)
+
     else:
-        print "no task coming"
+        print "{0} no task coming".format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
 if __name__ == "__main__":
     do_once()

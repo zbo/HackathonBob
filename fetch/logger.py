@@ -27,6 +27,18 @@ def filehandler_log(content):
     path = '/Users/zhu/Desktop/logs/filehandlers.txt'
     append(content, path)
 
+def disk_log(content):
+    path = '/Users/zhu/Desktop/logs/disk.txt'
+    append(content, path)
+
+def memory_log(content):
+    path = '/Users/zhu/Desktop/logs/memory.txt'
+    append(content, path)
+
+def semaphores_log(content):
+    path = '/Users/zhu/Desktop/logs/semaphores.txt'
+    append(content, path)
+
 def append(content, path):
     file_object = open(path, 'a')
     try:
