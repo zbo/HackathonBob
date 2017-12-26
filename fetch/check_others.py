@@ -20,6 +20,20 @@ class others_checker():
         self.check_iserverfreememory()
         self.check_filehandlers()
         self.check_semaphores()
+        self.check_iserverprocess()
+
+    def check_iserverprocess(self):
+        r = remote.remote()
+        r.connect()
+        stdout, stderr = r.run_command(''' ps -auxf | grep -v 'grep' | grep 'MSTRSvr' ''')
+        check_result = stdout.readlines()
+        r.close()
+        for line in check_result:
+            logger.iserverprocess_log(line)
+        if 'MSTRSvr' in check_result[0]:
+            self.update_item('iserver-process', 'match')
+        else:
+            self.update_item('iserver-process', 'notmatch')
 
     def check_semaphores(self):
         r = remote.remote()
@@ -29,7 +43,7 @@ class others_checker():
         r.close()
         for line in check_result:
             logger.semaphores_log(line)
-        array = str(line[0]).strip().split('\t')
+        array = str(check_result[0]).strip().split('\t')
         if int(array[0])>=250 and int(array[1])>=32000 and int(array[2])>=32 and int(array[3])>=4096:
             self.update_item('semaphores', 'match')
         else:

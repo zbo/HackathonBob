@@ -39,6 +39,10 @@ def semaphores_log(content):
     path = '/Users/zhu/Desktop/logs/semaphores.txt'
     append(content, path)
 
+def iserverprocess_log(content):
+    path = '/Users/zhu/Desktop/logs/iserverprocess.txt'
+    append(content, path)
+
 def append(content, path):
     file_object = open(path, 'a')
     try:
