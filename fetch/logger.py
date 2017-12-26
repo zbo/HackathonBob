@@ -15,6 +15,10 @@ def lib_log(content):
     path = '/Users/zhu/Desktop/logs/lib.txt'
     append(content, path)
 
+def reg_log(content):
+    path = '/Users/zhu/Desktop/logs/reg.txt'
+    append(content, path)
+
 def other_log(content):
     path = '/Users/zhu/Desktop/logs/other.txt'
     append(content, path)
