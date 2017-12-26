@@ -23,6 +23,10 @@ def other_log(content):
     path = '/Users/zhu/Desktop/logs/other.txt'
     append(content, path)
 
+def filehandler_log(content):
+    path = '/Users/zhu/Desktop/logs/filehandlers.txt'
+    append(content, path)
+
 def append(content, path):
     file_object = open(path, 'a')
     try:
